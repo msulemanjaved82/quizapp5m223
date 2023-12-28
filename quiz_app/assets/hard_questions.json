@@ -1,0 +1,53 @@
+[
+    {
+      "question": "What does IT stand for?",
+      "options": ["Internet Technology", "Information Technology", "Innovative Technology", "Integrated Technology"],
+      "correctIndex": 1
+    },
+    {
+      "question": "Which of the following is a programming language used for web development?",
+      "options": ["Java", "C#", "HTML", "SQL"],
+      "correctIndex": 2
+    },
+    {
+      "question": "What is the purpose of a DNS server?",
+      "options": ["Data Networking Service", "Domain Name System", "Digital Network Security", "Dynamic Naming Server"],
+      "correctIndex": 1
+    },
+    {
+      "question": "Which technology is used for wireless communication between devices over short distances?",
+      "options": ["Bluetooth", "Wi-Fi", "Ethernet", "NFC"],
+      "correctIndex": 0
+    },
+    {
+      "question": "What is the role of a database management system (DBMS) in IT?",
+      "options": ["Manage computer hardware", "Store and retrieve data", "Run web servers", "Create graphical user interfaces"],
+      "correctIndex": 1
+    },
+    {
+      "question": "Which cybersecurity measure involves encrypting data to make it unreadable without the correct decryption key?",
+      "options": ["Firewall", "Antivirus", "Encryption", "Intrusion Detection System"],
+      "correctIndex": 2
+    },
+    {
+      "question": "What is the function of a router in a computer network?",
+      "options": ["Connect devices within the same network", "Filter and forward data packets between networks", "Detect and remove viruses", "Manage user authentication"],
+      "correctIndex": 1
+    },
+    {
+      "question": "What is cloud computing?",
+      "options": ["Storing data on physical servers", "Running software locally", "Accessing resources over the internet", "Using a standalone computer"],
+      "correctIndex": 2
+    },
+    {
+      "question": "Which programming paradigm focuses on defining the structure and behavior of objects?",
+      "options": ["Procedural Programming", "Functional Programming", "Object-Oriented Programming", "Scripting"],
+      "correctIndex": 2
+    },
+    {
+      "question": "What is the primary function of an IT help desk?",
+      "options": ["Develop software applications", "Provide technical support to users", "Manage network infrastructure", "Conduct security audits"],
+      "correctIndex": 1
+    }
+]
+

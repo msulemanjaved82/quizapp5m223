@@ -1,0 +1,53 @@
+[
+    {
+      "question": "What does CPU stand for?",
+      "options": ["Central Processing Unit", "Computer Processing Unit", "Central Processor Unit", "Computer Processor Unit"],
+      "correctIndex": 0
+    },
+    {
+      "question": "Which programming language is known for its readability and simplicity?",
+      "options": ["Java", "Python", "C++", "Ruby"],
+      "correctIndex": 1
+    },
+    {
+      "question": "What is the purpose of RAM in a computer?",
+      "options": ["Read-Only Memory", "Random Access Memory", "Real-time Application Memory", "Remote Access Memory"],
+      "correctIndex": 1
+    },
+    {
+      "question": "What is the function of an operating system?",
+      "options": ["Manage hardware resources", "Run applications", "Both A and B", "None of the above"],
+      "correctIndex": 2
+    },
+    {
+      "question": "Which storage device has no moving parts?",
+      "options": ["Hard Disk Drive", "Solid State Drive", "CD-ROM", "Floppy Disk"],
+      "correctIndex": 1
+    },
+    {
+      "question": "What does HTML stand for?",
+      "options": ["Hyper Text Markup Language", "High-Level Text Markup Language", "Hyperlink and Text Markup Language", "Home Tool Markup Language"],
+      "correctIndex": 0
+    },
+    {
+      "question": "Which protocol is used for secure communication over a computer network?",
+      "options": ["FTP", "HTTP", "HTTPS", "SMTP"],
+      "correctIndex": 2
+    },
+    {
+      "question": "What is the purpose of a firewall?",
+      "options": ["Protect against viruses", "Control network access", "Both A and B", "None of the above"],
+      "correctIndex": 2
+    },
+    {
+      "question": "Which of the following is a programming paradigm?",
+      "options": ["Object-Oriented Programming", "Procedural Programming", "Functional Programming", "All of the above"],
+      "correctIndex": 3
+    },
+    {
+      "question": "What is the default file extension for a Java source code file?",
+      "options": [".java", ".class", ".jar", ".jv"],
+      "correctIndex": 0
+    }
+]
+

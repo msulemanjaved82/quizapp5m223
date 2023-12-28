@@ -1,0 +1,73 @@
+[
+    {
+      "question": "What programming language is Flutter based on?",
+      "options": ["Java", "Kotlin", "Dart", "Swift"],
+      "correctIndex": 2
+    },
+    {
+      "question": "Which widget is considered the basic building block in Flutter?",
+      "options": ["Container", "Column", "Row", "Scaffold"],
+      "correctIndex": 0
+    },
+    {
+      "question": "What does the 'hot reload' feature in Flutter allow developers to do?",
+      "options": [
+        "Compile the entire application",
+        "Reload only the changed parts of the code without restarting the app",
+        "Switch between debug and release modes",
+        "Generate code documentation"
+      ],
+      "correctIndex": 1
+    },
+    {
+      "question": "Which package is commonly used for state management in Flutter?",
+      "options": ["provider", "http", "shared_preferences", "sqflite"],
+      "correctIndex": 0
+    },
+    {
+      "question": "What command is used to create a new Flutter project from the command line?",
+      "options": ["flutter start", "dart create", "flutter init", "flutter create"],
+      "correctIndex": 3
+    },
+    {
+      "question": "Which of the following is NOT a valid Flutter layout widget?",
+      "options": ["Stack", "Grid", "ListView", "Column"],
+      "correctIndex": 1
+    },
+    {
+      "question": "What is the purpose of the 'pubspec.yaml' file in a Flutter project?",
+      "options": [
+        "Define project dependencies and metadata",
+        "Store user interface layouts",
+        "Specify the app's entry point",
+        "Configure the app's theme"
+      ],
+      "correctIndex": 0
+    },
+    {
+      "question": "Which method is used to make an HTTP GET request in Flutter?",
+      "options": ["http.get", "fetchData", "HttpRequest.get", "getHttp"],
+      "correctIndex": 0
+    },
+    {
+      "question": "What is the purpose of the Flutter 'BuildContext'?",
+      "options": [
+        "Accessing the device's GPS",
+        "Building the widget tree",
+        "Managing app state",
+        "Handling user input"
+      ],
+      "correctIndex": 1
+    },
+    {
+      "question": "In Flutter, what is the purpose of the 'setState' method?",
+      "options": [
+        "Updating the application's version",
+        "Changing the app's name",
+        "Rebuilding the widget tree with new state",
+        "Controlling the app's navigation"
+      ],
+      "correctIndex": 2
+    }
+]
+
