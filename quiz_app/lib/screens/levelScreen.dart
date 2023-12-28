@@ -1,4 +1,3 @@
-
 import 'package:flutter/material.dart';
 
 void main() {
@@ -89,14 +88,20 @@ class QuizHomePage extends StatelessWidget {
   onPressed: () {
     // Your button click logic here
   },
-  buttonText: 'New Quiz',
+  buttonText: 'Easy',
 ),
    SizedBox(height: 20),
              Button(
   onPressed: () {
     // Your button click logic here
   },
-  buttonText: 'History',
+  buttonText: 'Medium',
+),   SizedBox(height: 20),
+             Button(
+  onPressed: () {
+    // Your button click logic here
+  },
+  buttonText: 'Hard',
 ),
 
             SizedBox(height: 24),
