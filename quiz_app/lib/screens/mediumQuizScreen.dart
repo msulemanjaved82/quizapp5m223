@@ -2,21 +2,31 @@ import 'dart:async';
 import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
-
+import 'resultScreen.dart';
+import 'questions.dart';
 
 class MediumQuizScreen extends StatefulWidget {
+  const MediumQuizScreen({super.key});
+
   @override
-  _MediumQuizScreenState createState() => _MediumQuizScreenState();
+  _MediumQuizScreen createState() => _MediumQuizScreen();
 }
 
-class _MediumQuizScreenState extends State<MediumQuizScreen> {
+class _MediumQuizScreen extends State<MediumQuizScreen> {
+
   List<Question> _questions = [];
   int _currentIndex = 0;
   int _score = 0;
   bool _isAnswered = false;
   late Timer _timer = Timer(Duration.zero, () {});
   int _timeInSeconds = 15;
-  int _selectedOptionIndex = -1; // Variable to store the selected option index
+  int _selectedOptionIndex = -1;
+  int easyScore = 0;
+  int totalTimeInSeconds = 150; // Assuming 5 minutes for the quiz
+  int timeSpentInSeconds = 0;
+  List<int?> _userSelectedAnswers = List.generate(10, (index) => null);
+
+
 
 
   @override
@@ -45,13 +55,11 @@ class _MediumQuizScreenState extends State<MediumQuizScreen> {
     }
   }
 
-  // ... (your existing code)
 
-  // ... (your existing code)
 
   void _startTimer() {
     _timer.cancel(); // Cancel the previous timer if it exists
-    _timer = Timer.periodic(Duration(seconds: 1), (timer) {
+    _timer = Timer.periodic(const Duration(seconds: 1), (timer) {
       if (_timeInSeconds > 0) {
         setState(() {
           _timeInSeconds--;
@@ -73,10 +81,10 @@ class _MediumQuizScreenState extends State<MediumQuizScreen> {
 
 
   Color _updateTimerColor() {
-    if (_timeInSeconds >= 10) {
+    if (_timeInSeconds > 8) {
       return Colors.green;
-    } else if (_timeInSeconds >= 4) {
-      return Colors.yellow;
+    } else if (_timeInSeconds > 4) {
+      return Colors.yellowAccent;
     } else {
       return Colors.red;
     }
@@ -87,54 +95,54 @@ class _MediumQuizScreenState extends State<MediumQuizScreen> {
     if (!_isAnswered) {
       setState(() {
         _isAnswered = true;
-        _selectedOptionIndex = selectedIndex; // Store the selected option index
+        _selectedOptionIndex = selectedIndex;
+        _userSelectedAnswers[_currentIndex] = selectedIndex;
+
         if (selectedIndex >= 0 &&
             _questions[_currentIndex].correctIndex == selectedIndex) {
           _score++;
         }
       });
 
-      Future.delayed(Duration(seconds: 2), () {
+      timeSpentInSeconds += (15 - _timeInSeconds);
+
+
+      Future.delayed(const Duration(seconds: 2), () {
         _nextQuestion();
       });
     }
   }
 
-
   void _nextQuestion() {
     setState(() {
       _isAnswered = false;
-      _currentIndex++;
-      _timeInSeconds = 15; // Reset timer for the next question
-      if (_currentIndex < (_questions.length-1)) {
+      if (_currentIndex < (_questions.length - 1)) {
         // Load the next question
+        _currentIndex++;
+        _timeInSeconds = 15; // Reset timer for the next question
         _startTimer();
       } else {
         _timer.cancel();
-        // _showResultDialog();
+        // Handle quiz completion or navigation to the result screen
+        Navigator.push(
+          context,
+          MaterialPageRoute(
+            builder: (context) => ResultPage(
+              totalQuestions: _questions.length,
+              correctAnswers: _score, // Use _score instead of _questions._currentIndex.correctIndex
+              score: 10,
+              status: (easyScore > 5) ? "Pass" : (easyScore == 10) ? "Exceptional" : "Fail",
+              questions: _questions,
+              userSelectedAnswers: _userSelectedAnswers,
+              easyScore: easyScore,
+              totalTimeInSeconds: totalTimeInSeconds,
+              timeSpentInSeconds: timeSpentInSeconds,
+            ),
+          ),
+        );
       }
     });
   }
-  //
-  // void _showResultDialog() {
-  //   showDialog(
-  //     context: context,
-  //     builder: (BuildContext context) {
-  //       return AlertDialog(
-  //         title: Text('Quiz Completed'),
-  //         content: Text('Your Score: $_score'),
-  //         actions: [
-  //           TextButton(
-  //             onPressed: () {
-  //               Navigator.of(context).pop();
-  //             },
-  //             child: Text('OK'),
-  //           ),
-  //         ],
-  //       );
-  //     },
-  //   );
-  // }
 
   @override
   Widget build(BuildContext context) {
@@ -142,23 +150,23 @@ class _MediumQuizScreenState extends State<MediumQuizScreen> {
       appBar: null,
       body:
       Container(
-        color: Color(0xFFD9D9D9),
+        color: const Color(0xFFD9D9D9),
         child: _questions.isEmpty
-            ? Center(child: CircularProgressIndicator())
+            ? const Center(child: CircularProgressIndicator())
             : Padding(
           padding: const EdgeInsets.all(16.0),
           child: Column(
             children: [
-              SizedBox(height: 24,),
+              const SizedBox(height: 24,),
               Center(
                 child: Text(
                   '${_currentIndex + 1}/${_questions.length}',
-                  style: TextStyle(
+                  style: const TextStyle(
                       fontSize: 18,
                       fontWeight: FontWeight.bold),
                 ),
               ),
-              SizedBox(height: 30),
+              const SizedBox(height: 30),
               Container(
                 height: 60,
                 decoration: BoxDecoration(
@@ -169,33 +177,32 @@ class _MediumQuizScreenState extends State<MediumQuizScreen> {
                       color: Colors.black12.withOpacity(0.2), // Shadow color and opacity
                       spreadRadius: 2, // Spread radius of the shadow
                       blurRadius: 1, // Blur radius of the shadow
-                      offset: Offset(0, 2), // Offset of the shadow
+                      offset: const Offset(0, 2), // Offset of the shadow
                     ),
                   ],
                 ),
                 child: Center(
                   child: Text(
                     _questions[_currentIndex].question,
-                    style: TextStyle(fontSize: 20,
+                    style: const TextStyle(fontSize: 20,
                         fontWeight: FontWeight.w800),
                   ),
                 ),
               ),
-              SizedBox(height: 42),
-              // ... (your existing code)
+              const SizedBox(height: 42),
 
               Container(
                 height: 350,
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(35),
                   border: Border.all(color: Colors.white),
-                  color: Color(0xFFD9D9D9),
+                  color: const Color(0xFFD9D9D9),
                   boxShadow: [
                     BoxShadow(
                       color: Colors.black12.withOpacity(0.2), // Shadow color and opacity
                       spreadRadius: 2, // Spread radius of the shadow
                       blurRadius: 1, // Blur radius of the shadow
-                      offset: Offset(0, 2), // Offset of the shadow
+                      offset: const Offset(0, 2), // Offset of the shadow
                     ),
                   ],
                 ),
@@ -216,12 +223,12 @@ class _MediumQuizScreenState extends State<MediumQuizScreen> {
                             color: Colors.black12.withOpacity(0.2), // Shadow color and opacity
                             spreadRadius: 2, // Spread radius of the shadow
                             blurRadius: 1, // Blur radius of the shadow
-                            offset: Offset(0, 2), // Offset of the shadow
+                            offset: const Offset(0, 2), // Offset of the shadow
                           ),
                         ],
 
                       ),
-                      padding: EdgeInsets.symmetric(vertical: 8),
+                      padding: const EdgeInsets.symmetric(vertical: 8),
                       // margin: EdgeInsets.only(left: 0.0),
                       child: Row(
                         // crossAxisAlignment: CrossAxisAlignment.end,
@@ -230,8 +237,8 @@ class _MediumQuizScreenState extends State<MediumQuizScreen> {
                           Expanded(
                             child: RadioListTile<int>(
                               title: Container(
-                                margin: EdgeInsets.only(left: 15.0),
-                                child: Text(entry.value, style: TextStyle(
+                                margin: const EdgeInsets.only(left: 15.0),
+                                child: Text(entry.value, style: const TextStyle(
                                   fontWeight: FontWeight.w900,
                                   fontSize: 18,
                                   fontFamily: "Inter",
@@ -247,7 +254,7 @@ class _MediumQuizScreenState extends State<MediumQuizScreen> {
                               controlAffinity: ListTileControlAffinity.trailing,
                             ),
                           ),
-                          SizedBox(width: 8),
+                          const SizedBox(width: 8),
                         ],
                       ),
                     ),
@@ -256,10 +263,8 @@ class _MediumQuizScreenState extends State<MediumQuizScreen> {
                 ),
               ),
 
-// ... (rest of your code)
-
-              SizedBox(height: 48),
-              SizedBox(width: 198),
+              const SizedBox(height: 48),
+              const SizedBox(width: 198),
               Padding(
                 padding: const EdgeInsets.all(8),
                 child: Row(
@@ -270,7 +275,7 @@ class _MediumQuizScreenState extends State<MediumQuizScreen> {
                     Container(
                       width: 80,
                       height: 80,
-                      padding: EdgeInsets.all(8),
+                      padding: const EdgeInsets.all(8),
                       decoration: BoxDecoration(
                         borderRadius: BorderRadius.circular(50),
                         color: _updateTimerColor(),
@@ -278,7 +283,7 @@ class _MediumQuizScreenState extends State<MediumQuizScreen> {
                       child: Center(
                         child: Text(
                           '$_timeInSeconds',
-                          style: TextStyle(
+                          style: const TextStyle(
                             fontSize: 20,
                             color: Colors.white,
                           ),
@@ -288,10 +293,6 @@ class _MediumQuizScreenState extends State<MediumQuizScreen> {
                   ],
                 ),
               ),
-
-              // ...
-
-
             ],
           ),
         ),
@@ -300,22 +301,3 @@ class _MediumQuizScreenState extends State<MediumQuizScreen> {
   }
 }
 
-class Question {
-  final String question;
-  final List<String> options;
-  final int correctIndex;
-
-  Question({
-    required this.question,
-    required this.options,
-    required this.correctIndex,
-  });
-
-  factory Question.fromJson(Map<String, dynamic> json) {
-    return Question(
-      question: json['question'],
-      options: List<String>.from(json['options']),
-      correctIndex: json['correctIndex'],
-    );
-  }
-}

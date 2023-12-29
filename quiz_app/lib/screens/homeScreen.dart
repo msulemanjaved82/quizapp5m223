@@ -1,5 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:quiz_app/screens/historyScreen.dart';
+import 'package:quiz_app/screens/quizAttempt.dart';
 import 'levelScreen.dart';
+import 'quizAttempt.dart';
+import 'historyScreen.dart';
 
 class Button extends StatelessWidget {
   final VoidCallback onPressed;
@@ -47,9 +51,9 @@ class QuizHomePage extends StatelessWidget {
             begin: Alignment.topCenter,
             end: Alignment.bottomCenter,
             colors: [
-              Color.fromARGB(255, 159, 140, 164),
-              Color.fromARGB(255, 159, 140, 164), // Adjusted to keep a consistent purple color
-              Color.fromRGBO(136, 11, 213, 0),
+              Color.fromARGB(255, 161, 146, 162),
+              Color.fromARGB(255, 182, 170, 185), // Adjusted to keep a consistent purple color
+              Color.fromRGBO(158, 154, 161, 1.0),
               Colors.black87,
             ],
           ),
@@ -87,11 +91,22 @@ class QuizHomePage extends StatelessWidget {
             ),
             SizedBox(height: 20),
             Button(
-              onPressed: () {
-                // Your button click logic here
+              onPressed: () async {
+                List<QuizAttempt> quizAttempts = await fetchQuizAttempts();
+
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => HistoryPage(
+                      quizAttempts: quizAttempts,
+                    ),
+                  ),
+                );
               },
               buttonText: 'History',
             ),
+
+
             SizedBox(height: 24),
             Center(
               child: Container(

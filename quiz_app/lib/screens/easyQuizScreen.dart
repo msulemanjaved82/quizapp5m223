@@ -2,6 +2,8 @@ import 'dart:async';
 import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
+import 'resultScreen.dart';
+import 'questions.dart';
 
 class QuizScreen extends StatefulWidget {
   const QuizScreen({super.key});
@@ -11,13 +13,20 @@ class QuizScreen extends StatefulWidget {
 }
 
 class _QuizScreenState extends State<QuizScreen> {
+
   List<Question> _questions = [];
   int _currentIndex = 0;
   int _score = 0;
   bool _isAnswered = false;
   late Timer _timer = Timer(Duration.zero, () {});
   int _timeInSeconds = 30;
-  int _selectedOptionIndex = -1; // Variable to store the selected option index
+  int _selectedOptionIndex = -1;
+  int easyScore = 0;
+  int totalTimeInSeconds = 300; // Assuming 5 minutes for the quiz
+  int timeSpentInSeconds = 0;
+  List<int?> _userSelectedAnswers = List.generate(10, (index) => null);
+
+
 
 
   @override
@@ -86,19 +95,23 @@ class _QuizScreenState extends State<QuizScreen> {
     if (!_isAnswered) {
       setState(() {
         _isAnswered = true;
-        _selectedOptionIndex = selectedIndex; // Store the selected option index
+        _selectedOptionIndex = selectedIndex;
+        _userSelectedAnswers[_currentIndex] = selectedIndex;
+
         if (selectedIndex >= 0 &&
             _questions[_currentIndex].correctIndex == selectedIndex) {
           _score++;
         }
       });
+      timeSpentInSeconds += (30 - _timeInSeconds);
+      // totalTimeInSeconds += (30 - _timeInSeconds);
+
 
       Future.delayed(const Duration(seconds: 2), () {
         _nextQuestion();
       });
     }
   }
-
 
   void _nextQuestion() {
     setState(() {
@@ -111,10 +124,25 @@ class _QuizScreenState extends State<QuizScreen> {
       } else {
         _timer.cancel();
         // Handle quiz completion or navigation to the result screen
+        Navigator.push(
+          context,
+          MaterialPageRoute(
+            builder: (context) => ResultPage(
+              totalQuestions: _questions.length,
+              correctAnswers: _score, // Use _score instead of _questions._currentIndex.correctIndex
+              score: 10,
+              status: (easyScore > 5) ? "Pass" : (easyScore == 10) ? "Exceptional" : "Fail",
+              questions: _questions,
+              userSelectedAnswers: _userSelectedAnswers,
+              easyScore: easyScore,
+              totalTimeInSeconds: totalTimeInSeconds,
+              timeSpentInSeconds: timeSpentInSeconds,
+            ),
+          ),
+        );
       }
     });
   }
-
 
   @override
   Widget build(BuildContext context) {
@@ -269,26 +297,6 @@ class _QuizScreenState extends State<QuizScreen> {
           ),
         ),
       ),
-    );
-  }
-}
-
-class Question {
-  final String question;
-  final List<String> options;
-  final int correctIndex;
-
-  Question({
-    required this.question,
-    required this.options,
-    required this.correctIndex,
-  });
-
-  factory Question.fromJson(Map<String, dynamic> json) {
-    return Question(
-      question: json['question'],
-      options: List<String>.from(json['options']),
-      correctIndex: json['correctIndex'],
     );
   }
 }

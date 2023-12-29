@@ -24,15 +24,15 @@ class Button extends StatelessWidget {
           shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(30.0),
             side: BorderSide(
-              color: Color.fromARGB(255, 79, 118, 155),
+              color: Color.fromARGB(255, 130, 175, 196),
               width: 2.0,
             ),
           ),
-          primary: Color.fromARGB(255, 127, 160, 196),
+          primary: Color.fromARGB(255, 132, 168, 185),
           elevation: 5,
           padding: EdgeInsets.all(10),
           onPrimary: Colors.white,
-          shadowColor: Colors.blueGrey,
+          shadowColor: Colors.black,
         ),
         child: Text(buttonText),
       ),
@@ -66,12 +66,9 @@ class LevelPage extends StatelessWidget {
             end: Alignment.bottomCenter,
 
             colors: [
-              Color.fromARGB(255, 161, 144, 166),
-              Color.fromARGB(255, 184, 179, 185),
-
-              // Adjusted to keep a consistent purple color
-              Color.fromRGBO(137, 103, 159, 0.6),
-
+              Color.fromARGB(255, 161, 146, 162),
+              Color.fromARGB(255, 182, 170, 185), // Adjusted to keep a consistent purple color
+              Color.fromRGBO(158, 154, 161, 1.0),
               Colors.black87,
             ],
           ),

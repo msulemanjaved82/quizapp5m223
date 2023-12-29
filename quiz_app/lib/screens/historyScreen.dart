@@ -1,144 +1,91 @@
 import 'package:flutter/material.dart';
+import 'quizAttempt.dart';
+class HistoryPage extends StatelessWidget {
+  final List<QuizAttempt> quizAttempts; // Assuming you have a list of quiz attempts
 
-void main(List<String> args) {
-  runApp(const Home());
-}
-
-
-class Home extends StatelessWidget {
-  const Home({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'QuizQuest',
-      theme: ThemeData(primarySwatch: Colors.blue),
-      home: MyHomePage(),
-    );
-  }
-}
-
-class MyHomePage extends StatelessWidget {
-  const MyHomePage({super.key});
+  const HistoryPage({
+    Key? key,
+    required this.quizAttempts,
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       body: Container(
-         width: double.maxFinite,
-    height: double.maxFinite,
-    decoration: BoxDecoration(
-      color: Color(0xD9D9D9
-      ),
-    ),
+        width: double.infinity,
+        height: double.infinity,
         child: Column(
-        mainAxisAlignment: MainAxisAlignment.start,
-        children:[
-          Text('History',
-          style: TextStyle(
-            color: Colors.black,
-            fontSize: 32.0,
-            fontWeight: FontWeight.w400,
-          ),),
-          SizedBox(
-            height: 10.0,
-          ),
-          Container(
-            width: 344.0,
-            height: 71.0,
-            decoration: BoxDecoration(
-              color: Colors.white,
-              borderRadius: BorderRadius.all(
-                Radius.circular(20)
-              )
+          children: [
+            Text(
+              'History',
+              style: TextStyle(
+                color: Colors.black,
+                fontSize: 32.0,
+                fontWeight: FontWeight.w400,
+              ),
             ),
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-              children: [
-
-              Text('5th attempt: Pass',
-               style: TextStyle(color: Colors.black,
-              fontSize: 16.0,
-              fontWeight: FontWeight.w700),),
-              SizedBox(height: 14,),
-             FloatingActionButton(onPressed: (){},
-                child: Text('6/10',
-                style: TextStyle(color: Colors.black,
-                fontSize: 16.0,
-                fontWeight: FontWeight.w700)),)
-            ]),
-          ),
-          SizedBox(
-            height: 10.0,
-          ),
-          Container(
-            width: 344.0,
-            height: 71.0,
-            decoration: BoxDecoration(
-              color: Colors.white,
-              borderRadius: BorderRadius.all(
-                Radius.circular(20)
-              )
+            SizedBox(
+              height: 10.0,
             ),
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-              children: [
-
-             Text('5th attempt: Pass',
-               style: TextStyle(color: Colors.black,
-              fontSize: 16.0,
-              fontWeight: FontWeight.w700),),
-              SizedBox(height: 14,),
-             FloatingActionButton(onPressed: (){},
-                child: Text('6/10',
-                style: TextStyle(color: Colors.black,
-                fontSize: 16.0,
-                fontWeight: FontWeight.w700)),)
-            ]),
-          ),
-          SizedBox(
-            height: 10.0,
-          ),
-          Container(
-            width: 344.0,
-            height: 71.0,
-            decoration: BoxDecoration(
-              color: Colors.white,
-              borderRadius: BorderRadius.all(
-                Radius.circular(20)
-              )
+            Column(
+              children: quizAttempts.map((attempt) {
+                return Container(
+                  margin: EdgeInsets.symmetric(vertical: 10.0),
+                  width: 344.0,
+                  height: 71.0,
+                  decoration: BoxDecoration(
+                    color: Colors.white,
+                    borderRadius: BorderRadius.all(
+                      Radius.circular(20),
+                    ),
+                  ),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                    children: [
+                      Text(
+                        '${attempt.attemptNumber}th attempt: ${attempt.status}',
+                        style: TextStyle(
+                          color: Colors.black,
+                          fontSize: 16.0,
+                          fontWeight: FontWeight.w700,
+                        ),
+                      ),
+                      SizedBox(
+                        height: 14,
+                      ),
+                      FloatingActionButton(
+                        onPressed: () {},
+                        child: Text(
+                          '${attempt.correctAnswers}/${attempt.totalQuestions}',
+                          style: TextStyle(
+                            color: Colors.black,
+                            fontSize: 16.0,
+                            fontWeight: FontWeight.w700,
+                          ),
+                        ),
+                      ),
+                    ],
+                  ),
+                );
+              }).toList(),
             ),
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-              children: [
-
-             Text('5th attempt: Pass',
-               style: TextStyle(color: Colors.black,
-              fontSize: 16.0,
-              fontWeight: FontWeight.w700),),
-              SizedBox(height: 14,),
-             FloatingActionButton(onPressed: (){},
-                child: Text('6/10',
-                style: TextStyle(color: Colors.black,
-                fontSize: 16.0,
-                fontWeight: FontWeight.w700)),)
-            ]),
-          ),
-          SizedBox(height: 10,),
-
-          Container(
-            height: 382.0,
-            width: 342.0,
-            decoration: BoxDecoration(
-              color: Colors.grey,
-              borderRadius: BorderRadius.all(
-                Radius.circular(205)
-              )
+            SizedBox(
+              height: 10.0,
             ),
-          
-          )
-          
-      ],)),
+            Container(
+              height: 382.0,
+              width: 342.0,
+              decoration: BoxDecoration(
+                color: Colors.grey,
+                borderRadius: BorderRadius.all(
+                  Radius.circular(205),
+                ),
+              ),
+            ),
+          ],
+        ),
+      ),
     );
   }
 }
+
