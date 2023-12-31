@@ -51,9 +51,15 @@ class QuizHomePage extends StatelessWidget {
             begin: Alignment.topCenter,
             end: Alignment.bottomCenter,
             colors: [
+<<<<<<< Updated upstream
               Color.fromARGB(255, 161, 146, 162),
               Color.fromARGB(255, 182, 170, 185), // Adjusted to keep a consistent purple color
               Color.fromRGBO(158, 154, 161, 1.0),
+=======
+              Color.fromARGB(255, 233, 213, 238),
+              Color.fromARGB(255, 199, 156, 212), // Adjusted to keep a consistent purple color
+              Color.fromRGBO(136, 11, 213, 0),
+>>>>>>> Stashed changes
               Colors.black87,
             ],
           ),
@@ -139,6 +145,21 @@ class QuizHomePage extends StatelessWidget {
                   ),
                 ),
                 Transform.rotate(
+                  angle: 35 * 3.141592653589793 / 80,
+                  child: Icon(
+                    Icons.star,
+                    color: Color.fromARGB(255, 99, 78, 103),
+                    size: 100,
+                    shadows: [
+                      Shadow(
+                        blurRadius: 5.0,
+                        color: Colors.black,
+                        offset: Offset(2.0, 2.0),
+                      ),
+                    ],
+                  ),
+                ),  
+                 Transform.rotate(
                   angle: 35 * 3.141592653589793 / 80,
                   child: Icon(
                     Icons.star,
