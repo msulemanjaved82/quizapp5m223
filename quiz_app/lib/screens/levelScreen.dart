@@ -64,11 +64,10 @@ class LevelPage extends StatelessWidget {
           gradient: LinearGradient(
             begin: Alignment.topCenter,
             end: Alignment.bottomCenter,
-
             colors: [
-              Color.fromARGB(255, 161, 146, 162),
-              Color.fromARGB(255, 182, 170, 185), // Adjusted to keep a consistent purple color
-              Color.fromRGBO(158, 154, 161, 1.0),
+              Color.fromARGB(255, 233, 213, 238),
+              Color.fromARGB(255, 199, 156, 212), // Adjusted to keep a consistent purple color
+              Color.fromRGBO(136, 11, 213, 0),
               Colors.black87,
             ],
           ),
@@ -84,7 +83,11 @@ class LevelPage extends StatelessWidget {
             SizedBox(height: 50),
             Button(
               onPressed: () {
-                Navigator.push(context, MaterialPageRoute(builder: (context) => QuizScreen(),));
+                Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => QuizScreen(),
+                    ));
                 // Your button click logic here
               },
               buttonText: 'Easy',
@@ -92,7 +95,11 @@ class LevelPage extends StatelessWidget {
             SizedBox(height: 20),
             Button(
               onPressed: () {
-                Navigator.push(context, MaterialPageRoute(builder: (context) => MediumQuizScreen(),));
+                Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => MediumQuizScreen(),
+                    ));
 
                 // Your button click logic here
               },
@@ -101,7 +108,11 @@ class LevelPage extends StatelessWidget {
             SizedBox(height: 20),
             Button(
               onPressed: () {
-                Navigator.push(context, MaterialPageRoute(builder: (context) => hardQuizScreen(),));
+                Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => hardQuizScreen(),
+                    ));
 
                 // Your button click logic here
               },
@@ -149,5 +160,3 @@ class LevelPage extends StatelessWidget {
     );
   }
 }
-
-
