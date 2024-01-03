@@ -26,9 +26,6 @@ class _QuizScreenState extends State<QuizScreen> {
   int timeSpentInSeconds = 0;
   List<int?> _userSelectedAnswers = List.generate(10, (index) => null);
 
-
-
-
   @override
   void initState() {
     super.initState();
@@ -55,8 +52,6 @@ class _QuizScreenState extends State<QuizScreen> {
     }
   }
 
-
-
   void _startTimer() {
     _timer.cancel(); // Cancel the previous timer if it exists
     _timer = Timer.periodic(const Duration(seconds: 1), (timer) {
@@ -76,10 +71,6 @@ class _QuizScreenState extends State<QuizScreen> {
     });
   }
 
-
-
-
-
   Color _updateTimerColor() {
     if (_timeInSeconds > 15) {
       return Colors.green;
@@ -89,7 +80,6 @@ class _QuizScreenState extends State<QuizScreen> {
       return Colors.red;
     }
   }
-
 
   void _answerQuestion(int selectedIndex) {
     if (!_isAnswered) {
@@ -104,9 +94,6 @@ class _QuizScreenState extends State<QuizScreen> {
         }
       });
       timeSpentInSeconds += (30 - _timeInSeconds);
-      // totalTimeInSeconds += (30 - _timeInSeconds);
-
-
       Future.delayed(const Duration(seconds: 2), () {
         _nextQuestion();
       });
@@ -131,7 +118,7 @@ class _QuizScreenState extends State<QuizScreen> {
               totalQuestions: _questions.length,
               correctAnswers: _score, // Use _score instead of _questions._currentIndex.correctIndex
               score: 10,
-              status: (easyScore > 5) ? "Pass" : (easyScore == 10) ? "Exceptional" : "Fail",
+              status: (_score > 5) ? "Pass" : (_score == 10) ? "Exceptional" : "Fail",
               questions: _questions,
               userSelectedAnswers: _userSelectedAnswers,
               easyScore: easyScore,
@@ -226,7 +213,6 @@ class _QuizScreenState extends State<QuizScreen> {
                             offset: const Offset(0, 2), // Offset of the shadow
                           ),
                         ],
-
                       ),
                       padding: const EdgeInsets.symmetric(vertical: 8),
                       // margin: EdgeInsets.only(left: 0.0),

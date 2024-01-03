@@ -1,10 +1,9 @@
-
-import 'questions.dart';
 import 'dart:async';
 import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 import 'resultScreen.dart';
+import 'questions.dart';
 
 class hardQuizScreen extends StatefulWidget {
   const hardQuizScreen({super.key});
@@ -20,15 +19,12 @@ class _hardQuizScreen extends State<hardQuizScreen> {
   int _score = 0;
   bool _isAnswered = false;
   late Timer _timer = Timer(Duration.zero, () {});
-  int _timeInSeconds = 8;
+  int _timeInSeconds = 10;
   int _selectedOptionIndex = -1;
   int easyScore = 0;
-  int totalTimeInSeconds = 80; // Assuming 5 minutes for the quiz
+  int totalTimeInSeconds = 100; // Assuming 5 minutes for the quiz
   int timeSpentInSeconds = 0;
   List<int?> _userSelectedAnswers = List.generate(10, (index) => null);
-
-
-
 
   @override
   void initState() {
@@ -56,8 +52,6 @@ class _hardQuizScreen extends State<hardQuizScreen> {
     }
   }
 
-
-
   void _startTimer() {
     _timer.cancel(); // Cancel the previous timer if it exists
     _timer = Timer.periodic(const Duration(seconds: 1), (timer) {
@@ -77,20 +71,15 @@ class _hardQuizScreen extends State<hardQuizScreen> {
     });
   }
 
-
-
-
-
   Color _updateTimerColor() {
-    if (_timeInSeconds > 5) {
+    if (_timeInSeconds > 6) {
       return Colors.green;
-    } else if (_timeInSeconds > 2) {
+    } else if (_timeInSeconds > 3) {
       return Colors.yellowAccent;
     } else {
       return Colors.red;
     }
   }
-
 
   void _answerQuestion(int selectedIndex) {
     if (!_isAnswered) {
@@ -104,11 +93,8 @@ class _hardQuizScreen extends State<hardQuizScreen> {
           _score++;
         }
       });
-
-      timeSpentInSeconds += (8 - _timeInSeconds);
-
-
-      Future.delayed(const Duration(seconds: 2), () {
+      timeSpentInSeconds += (10 - _timeInSeconds);
+      Future.delayed(const Duration(seconds: 3), () {
         _nextQuestion();
       });
     }
@@ -120,7 +106,7 @@ class _hardQuizScreen extends State<hardQuizScreen> {
       if (_currentIndex < (_questions.length - 1)) {
         // Load the next question
         _currentIndex++;
-        _timeInSeconds = 8; // Reset timer for the next question
+        _timeInSeconds = 10; // Reset timer for the next question
         _startTimer();
       } else {
         _timer.cancel();
@@ -132,7 +118,7 @@ class _hardQuizScreen extends State<hardQuizScreen> {
               totalQuestions: _questions.length,
               correctAnswers: _score, // Use _score instead of _questions._currentIndex.correctIndex
               score: 10,
-              status: (easyScore > 5) ? "Pass" : (easyScore == 10) ? "Exceptional" : "Fail",
+              status: (_score > 5) ? "Pass" : (_score == 10) ? "Exceptional" : "Fail",
               questions: _questions,
               userSelectedAnswers: _userSelectedAnswers,
               easyScore: easyScore,
@@ -191,7 +177,6 @@ class _hardQuizScreen extends State<hardQuizScreen> {
                 ),
               ),
               const SizedBox(height: 42),
-
               Container(
                 height: 350,
                 decoration: BoxDecoration(
@@ -227,7 +212,6 @@ class _hardQuizScreen extends State<hardQuizScreen> {
                             offset: const Offset(0, 2), // Offset of the shadow
                           ),
                         ],
-
                       ),
                       padding: const EdgeInsets.symmetric(vertical: 8),
                       // margin: EdgeInsets.only(left: 0.0),

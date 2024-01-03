@@ -4,6 +4,7 @@ import 'package:quiz_app/screens/quizAttempt.dart';
 import 'levelScreen.dart';
 import 'quizAttempt.dart';
 import 'historyScreen.dart';
+import 'historyScreen.dart';
 
 class Button extends StatelessWidget {
   final VoidCallback onPressed;
@@ -34,7 +35,11 @@ class Button extends StatelessWidget {
         onPrimary: Colors.white,
         shadowColor: Colors.black,
       ),
-      child: Text(buttonText),
+      child: Text(buttonText, style: TextStyle(
+        fontSize: 14.0,
+        fontWeight: FontWeight.bold,
+        color: Color(0xA4130983),
+      ),),
     );
   }
 }
@@ -105,12 +110,12 @@ class QuizHomePage extends StatelessWidget {
               },
               buttonText: 'History',
             ),
-            SizedBox(height: 24),
+            SizedBox(height: 48.0),
             Center(
               child: Container(
-                width: 280,
+                width: 470,
                 child: Text(
-                  'Engage in challenging quizzes, track your progress and compete with friends',
+                  'Engage in challenging quizzes, track your progress and compete with friends. Unleash Your Knowledge. Fun Learning, One Question at a Time..',
                   style: TextStyle(
                     color: Color.fromARGB(255, 92, 62, 143),
                   ),
