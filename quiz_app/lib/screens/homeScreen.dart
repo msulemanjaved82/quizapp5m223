@@ -4,7 +4,6 @@ import 'package:quiz_app/screens/quizAttempt.dart';
 import 'levelScreen.dart';
 import 'quizAttempt.dart';
 import 'historyScreen.dart';
-import 'historyScreen.dart';
 
 class Button extends StatelessWidget {
   final VoidCallback onPressed;
@@ -69,7 +68,8 @@ class QuizHomePage extends StatelessWidget {
             Text(
               'Quiz Quest',
               style: TextStyle(
-                fontSize: 30,
+                fontSize: 40,
+                fontFamily: 'Italianno',
                 fontWeight: FontWeight.bold,
                 color: Colors.purple,
                 shadows: [
@@ -92,7 +92,7 @@ class QuizHomePage extends StatelessWidget {
                 );
                 // Your button click logic here
               },
-              buttonText: 'New Quiz',
+              buttonText: 'New Quiz' ,
             ),
             SizedBox(height: 20),
             Button(
@@ -118,6 +118,9 @@ class QuizHomePage extends StatelessWidget {
                   'Engage in challenging quizzes, track your progress and compete with friends. Unleash Your Knowledge. Fun Learning, One Question at a Time..',
                   style: TextStyle(
                     color: Color.fromARGB(255, 92, 62, 143),
+                    fontFamily: 'ComicNeue',
+                     fontWeight: FontWeight.bold,
+                     fontSize: 15.0,
                   ),
                 ),
               ),

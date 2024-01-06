@@ -79,9 +79,21 @@ class LevelPage extends StatelessWidget {
           children: [
             Text(
               'Quiz Quest',
-              style: titleTextStyle,
+                  style: TextStyle(
+                fontSize: 40,
+                fontFamily: 'Italianno',
+                fontWeight: FontWeight.bold,
+                color: Colors.purple,
+                shadows: [
+                  Shadow(
+                    blurRadius: 5.0,
+                    color: Colors.grey,
+                    offset: Offset(2.0, 2.0),
+                  ),
+                ],
+              ),
             ),
-            SizedBox(height: 80),
+            SizedBox(height: 50),
             Button(
               onPressed: () {
                 Navigator.push(
