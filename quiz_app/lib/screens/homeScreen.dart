@@ -35,6 +35,7 @@ class Button extends StatelessWidget {
         shadowColor: Colors.black,
       ),
       child: Text(buttonText, style: TextStyle(
+        fontFamily: 'Itim',
         fontSize: 14.0,
         fontWeight: FontWeight.bold,
         color: Color(0xA4130983),
