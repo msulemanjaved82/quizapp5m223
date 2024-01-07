@@ -76,7 +76,7 @@ class _QuizScreenState extends State<QuizScreen> {
     if (_timeInSeconds > 15) {
       return Colors.green;
     } else if (_timeInSeconds > 4) {
-      return Colors.yellowAccent;
+      return Color(0xFFD3C546);
     } else {
       return Colors.red;
     }
@@ -112,7 +112,7 @@ class _QuizScreenState extends State<QuizScreen> {
       } else {
         _timer.cancel();
         // Handle quiz completion or navigation to the result screen
-        Navigator.push(
+        Navigator.pushReplacement(
           context,
           MaterialPageRoute(
             builder: (context) => ResultPage(
@@ -173,7 +173,9 @@ class _QuizScreenState extends State<QuizScreen> {
                   child: Text(
                     _questions[_currentIndex].question,
                     style: const TextStyle(fontSize: 20,
+                        fontFamily: 'Inter',
                         fontWeight: FontWeight.w800),
+
                   ),
                 ),
               ),
@@ -228,7 +230,7 @@ class _QuizScreenState extends State<QuizScreen> {
                                 child: Text(entry.value, style: const TextStyle(
                                   fontWeight: FontWeight.w900,
                                   fontSize: 18,
-                                  fontFamily: "Inter",
+                                  fontFamily:  'Inter',
                                 ),),
                               ),
                               value: entry.key,
@@ -251,14 +253,11 @@ class _QuizScreenState extends State<QuizScreen> {
               ),
 
               const SizedBox(height: 48),
-              const SizedBox(width: 198),
               Padding(
                 padding: const EdgeInsets.all(8),
                 child: Row(
+                  mainAxisAlignment: MainAxisAlignment.end,
                   children: [
-                    Container(
-                      width: 870,
-                    ),
                     Container(
                       width: 80,
                       height: 80,

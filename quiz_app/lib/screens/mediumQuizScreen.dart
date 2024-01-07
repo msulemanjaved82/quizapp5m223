@@ -75,7 +75,7 @@ class _MediumQuizScreen extends State<MediumQuizScreen> {
     if (_timeInSeconds > 8) {
       return Colors.green;
     } else if (_timeInSeconds > 4) {
-      return Colors.yellowAccent;
+      return Color(0xFFD3C546);
     } else {
       return Colors.red;
     }
@@ -111,7 +111,7 @@ class _MediumQuizScreen extends State<MediumQuizScreen> {
       } else {
         _timer.cancel();
         // Handle quiz completion or navigation to the result screen
-        Navigator.push(
+        Navigator.pushReplacement(
           context,
           MaterialPageRoute(
             builder: (context) => ResultPage(
@@ -172,6 +172,7 @@ class _MediumQuizScreen extends State<MediumQuizScreen> {
                   child: Text(
                     _questions[_currentIndex].question,
                     style: const TextStyle(fontSize: 20,
+                        fontFamily: 'Inter',
                         fontWeight: FontWeight.w800),
                   ),
                 ),
@@ -250,14 +251,11 @@ class _MediumQuizScreen extends State<MediumQuizScreen> {
               ),
 
               const SizedBox(height: 48),
-              const SizedBox(width: 198),
               Padding(
                 padding: const EdgeInsets.all(8),
                 child: Row(
+                  mainAxisAlignment: MainAxisAlignment.end,
                   children: [
-                    Container(
-                      width: 870,
-                    ),
                     Container(
                       width: 80,
                       height: 80,

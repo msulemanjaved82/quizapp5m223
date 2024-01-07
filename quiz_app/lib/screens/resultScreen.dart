@@ -49,9 +49,10 @@ class ResultPage extends StatelessWidget {
                     child: Text(
                       'Result',
                       style: TextStyle(
-                        color: Colors.blueAccent,
-                        fontSize: 32.0,
-                        fontWeight: FontWeight.w700,
+                        fontFamily: 'Itim',
+                        color: Colors.blueGrey,
+                        fontSize: 34.0,
+                        fontWeight: FontWeight.w600,
                       ),
                     ),
                   ),
@@ -83,6 +84,7 @@ class ResultPage extends StatelessWidget {
                           child: Text(
                             questions[i].question,
                             style: const TextStyle(
+                              fontFamily: 'Inter',
                               color: Colors.black,
                               fontSize: 18.0,
                               fontWeight: FontWeight.w700,
@@ -104,6 +106,7 @@ class ResultPage extends StatelessWidget {
                                   ? Colors.green
                                   : Colors.red,
                               fontSize: 16.0,
+                              fontFamily: 'Inter',
                               fontWeight: FontWeight.w700,
                             ),
                           ),
@@ -165,6 +168,7 @@ class ResultPage extends StatelessWidget {
                       ),
                       Text('Status: $status',
                           style: TextStyle(
+                            fontFamily: 'Itim',
                             color: Colors.black,
                             fontSize: 14.0,
                             fontWeight: FontWeight.bold,
@@ -203,6 +207,7 @@ class ResultPage extends StatelessWidget {
                       SizedBox(height: 12),
                       Text('Time in seconds',
                           style: TextStyle(
+                            fontFamily: 'Itim',
                               color: Colors.black,
                               fontSize: 16.0,
                               fontWeight: FontWeight.bold)),

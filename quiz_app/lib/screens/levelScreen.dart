@@ -4,43 +4,6 @@ import 'mediumQuizScreen.dart';
 import 'hardQuizScreen.dart';
 import 'homeScreen.dart';
 
-// class Button extends StatelessWidget {
-//   final VoidCallback onPressed;
-//   final String buttonText;
-//
-//   const Button({
-//     Key? key,
-//     required this.onPressed,
-//     required this.buttonText,
-//   }) : super(key: key);
-//
-//   @override
-//   Widget build(BuildContext context) {
-//     return Container(
-//       width: 150,
-//       height: 40,
-//       child: ElevatedButton(
-//         onPressed: onPressed,
-//         style: ElevatedButton.styleFrom(
-//           shape: RoundedRectangleBorder(
-//             borderRadius: BorderRadius.circular(30.0),
-//             side: BorderSide(
-//               color: Color.fromARGB(255, 130, 175, 196),
-//               width: 2.0,
-//             ),
-//           ),
-//           primary: Color.fromARGB(255, 132, 168, 185),
-//           elevation: 5,
-//           padding: EdgeInsets.all(10),
-//           onPrimary: Colors.white,
-//           shadowColor: Colors.black,
-//         ),
-//         child: Text(buttonText),
-//       ),
-//     );
-//   }
-// }
-
 class LevelPage extends StatelessWidget {
   final TextStyle titleTextStyle = TextStyle(
     fontSize: 30,
@@ -68,7 +31,7 @@ class LevelPage extends StatelessWidget {
             colors: [
               Color.fromARGB(255, 233, 213, 238),
               Color.fromARGB(255, 199, 156, 212), // Adjusted to keep a consistent purple color
-              Color.fromRGBO(136, 11, 213, 0),
+              Color.fromARGB(255, 199, 156, 212), // Adjusted to keep a consistent purple color
               Colors.black87,
             ],
           ),
@@ -96,7 +59,7 @@ class LevelPage extends StatelessWidget {
             SizedBox(height: 50),
             Button(
               onPressed: () {
-                Navigator.push(
+                Navigator.pushReplacement(
                     context,
                     MaterialPageRoute(
                       builder: (context) => QuizScreen(),
@@ -108,7 +71,7 @@ class LevelPage extends StatelessWidget {
             SizedBox(height: 20),
             Button(
               onPressed: () {
-                Navigator.push(
+                Navigator.pushReplacement(
                     context,
                     MaterialPageRoute(
                       builder: (context) => MediumQuizScreen(),
@@ -121,12 +84,11 @@ class LevelPage extends StatelessWidget {
             SizedBox(height: 20),
             Button(
               onPressed: () {
-                Navigator.push(
+                Navigator.pushReplacement(
                     context,
                     MaterialPageRoute(
                       builder: (context) => hardQuizScreen(),
                     ));
-
                 // Your button click logic here
               },
               buttonText: 'Hard',

@@ -24,20 +24,21 @@ class Button extends StatelessWidget {
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(30.0),
           side: BorderSide(
-            color: Color.fromARGB(255, 130, 175, 196),
+            color: Color.fromARGB(206, 167, 165, 197),
             width: 2.0,
           ),
         ),
-        primary: Color.fromARGB(255, 132, 168, 185),
+        primary: Color.fromARGB(206, 164, 162, 217),
         elevation: 5,
         padding: EdgeInsets.all(10),
         onPrimary: Colors.white,
         shadowColor: Colors.black,
       ),
       child: Text(buttonText, style: TextStyle(
-        fontSize: 14.0,
-        fontWeight: FontWeight.bold,
-        color: Color(0xA4130983),
+        fontSize: 18.0,
+        fontWeight: FontWeight.w500,
+        fontFamily: 'Itim',
+        color: Colors.indigo,
       ),),
     );
   }
@@ -57,7 +58,7 @@ class QuizHomePage extends StatelessWidget {
             colors: [
               Color.fromARGB(255, 233, 213, 238),
               Color.fromARGB(255, 199, 156, 212), // Adjusted to keep a consistent purple color
-              Color.fromRGBO(136, 11, 213, 0),
+              Color.fromARGB(255, 199, 156, 212), // Adjusted to keep a consistent purple color
               Colors.black87,
             ],
           ),
@@ -110,7 +111,7 @@ class QuizHomePage extends StatelessWidget {
               },
               buttonText: 'History',
             ),
-            SizedBox(height: 48.0),
+            SizedBox(height: 78.0),
             Center(
               child: Container(
                 width: 470,
