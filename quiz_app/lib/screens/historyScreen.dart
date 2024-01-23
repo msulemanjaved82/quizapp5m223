@@ -22,7 +22,7 @@ class HistoryPage extends StatelessWidget {
             Text(
               'History',
               style: TextStyle(
-                color: Colors.blueGrey,
+                color: Colors.black,
                 fontSize: 32.0,
                 fontWeight: FontWeight.w400,
                 fontFamily: 'Itim',

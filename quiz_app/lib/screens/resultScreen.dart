@@ -229,6 +229,7 @@ class ResultPage extends StatelessWidget {
                       Button(onPressed:  () {
                                 Navigator.push(context, MaterialPageRoute(builder: (context) => QuizHomePage(),));},
                                 buttonText: "Home",
+                                
                         )
                     ],
                   ),
