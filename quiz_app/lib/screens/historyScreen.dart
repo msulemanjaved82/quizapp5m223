@@ -129,7 +129,7 @@ class HistoryPage extends StatelessWidget {
                   color: Color.fromARGB(255, 187, 184, 199),
                   size: 1500,),
               ),
-              height: 420,
+              height: 350,
               width: double.infinity,
               // decoration: BoxDecoration(
               //   color: Color(0x80C0B6E1),
