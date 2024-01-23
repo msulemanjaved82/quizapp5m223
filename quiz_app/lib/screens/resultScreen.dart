@@ -96,21 +96,35 @@ class ResultPage extends StatelessWidget {
                         // ),
                         Padding(
                           padding: const EdgeInsets.all(8.0),
-                          child: Text(
-                            userSelectedAnswers[i] == questions[i].correctIndex
-                                ? '${questions[i].options[userSelectedAnswers[i] ?? 0]}'
-                                : '${questions[i].options[userSelectedAnswers[i] ?? 0]}'
-                                '\n${questions[i].options[questions[i].correctIndex]}',
-                            style: TextStyle(
-                              color: userSelectedAnswers[i] == questions[i].correctIndex
-                                  ? Colors.green
-                                  : Colors.red,
-                              fontSize: 16.0,
-                              fontFamily: 'Inter',
-                              fontWeight: FontWeight.w700,
-                            ),
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              Text(
+                                '${questions[i].options[userSelectedAnswers[i] ?? 0]}',
+                                style: TextStyle(
+                                  color: userSelectedAnswers[i] == questions[i].correctIndex
+                                      ? Colors.green
+                                      : Colors.red,
+                                  fontSize: 16.0,
+                                  fontFamily: 'Inter',
+                                  fontWeight: FontWeight.w700,
+                                ),
+                              ),
+                              const SizedBox(height: 8),
+                              Text(
+                                '${questions[i].options[questions[i].correctIndex]}',
+                                style: TextStyle(
+                                  color: Colors.green,
+                                  fontSize: 16.0,
+                                  fontFamily: 'Inter',
+                                  fontWeight: FontWeight.w700,
+                                ),
+                              ),
+                            ],
                           ),
                         ),
+
+
                       ],
                     ),
                   ),

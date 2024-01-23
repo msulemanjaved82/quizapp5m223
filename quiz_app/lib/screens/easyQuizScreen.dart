@@ -65,7 +65,7 @@ class _QuizScreenState extends State<QuizScreen> {
         _timer.cancel();
         // Automatically mark as incorrect if not answered
         if (!_isAnswered) {
-          _answerQuestion(-1); // Assuming -1 is an invalid index, adjust as needed
+          _answerQuestion(null); // Assuming -1 is an invalid index, adjust as needed
         }
         _nextQuestion();
       }
@@ -82,24 +82,27 @@ class _QuizScreenState extends State<QuizScreen> {
     }
   }
 
-  void _answerQuestion(int selectedIndex) {
+  void _answerQuestion(int? selectedIndex) {
     if (!_isAnswered) {
       setState(() {
         _isAnswered = true;
-        _selectedOptionIndex = selectedIndex;
-        _userSelectedAnswers[_currentIndex] = selectedIndex;
+        _selectedOptionIndex = selectedIndex ?? -1; // Use -1 or any other value as needed
 
-        if (selectedIndex >= 0 &&
-            _questions[_currentIndex].correctIndex == selectedIndex) {
+        if (selectedIndex != null && _questions[_currentIndex].correctIndex == selectedIndex) {
           _score++;
+          _userSelectedAnswers[_currentIndex] = selectedIndex; // Update the selected answer
+        } else {
+          _userSelectedAnswers[_currentIndex] = null; // Update with an invalid index for wrong answers
         }
       });
+
       timeSpentInSeconds += (30 - _timeInSeconds);
       Future.delayed(const Duration(seconds: 2), () {
         _nextQuestion();
       });
     }
   }
+
 
   void _nextQuestion() {
     setState(() {
