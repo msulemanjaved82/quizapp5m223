@@ -44,13 +44,13 @@ class ResultPage extends StatelessWidget {
               children: [
                 Container(
                   width: double.infinity,
-                  padding: const EdgeInsets.all(16),
+                  padding: const EdgeInsets.all(20),
                   child: Center(
                     child: Text(
                       'Result',
                       style: TextStyle(
                         fontFamily: 'Itim',
-                        color: Colors.blueGrey,
+                        color: Colors.black,
                         fontSize: 34.0,
                         fontWeight: FontWeight.w600,
                       ),
